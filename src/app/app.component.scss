@@ -2,11 +2,10 @@
 @import "./shared/scss/animations.scss";
 @import "./shared/scss/mixins.scss";
 
-body {
+:host {
+  display: block;
   font-size: 100%;
-  font-family: Helvetica, Arial, sans-serif;
-  color: black;
-  background: white;
+  color: #e8eefc;
 }
 
 .slot-main-container {
@@ -14,42 +13,76 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 1.5rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: linear-gradient(160deg, rgba(20, 24, 34, 0.92), rgba(4, 6, 10, 0.96));
+  border: 1px solid rgba(120, 140, 255, 0.2);
+  border-radius: 32px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55),
+    inset 0 0 40px rgba(93, 128, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(60, 120, 255, 0.12), transparent 55%);
+    pointer-events: none;
+  }
 
   .slot-tittle {
-    margin: 20px 10px 15px;
-    padding: 0px 30px 0px 30px;
-    color: $secondary-color;
+    margin: 10px 10px 5px;
+    padding: 0 30px;
+    color: #f7f1ff;
     font-weight: 900;
+    font-size: 3rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(139, 99, 255, 0.7),
+      0 0 40px rgba(86, 156, 255, 0.5);
   }
 }
 
 .win-condition-title {
   margin: auto;
   text-align: center;
-  width: 50%;
-  color: $secondary-color;
-  font-weight: 100;
+  width: 70%;
+  color: rgba(210, 222, 255, 0.7);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
 }
 
 .win-condition-container {
   display: grid;
   height: 100%;
   width: 100%;
-  border: 2px solid $orange;
-  margin-bottom: 15px;
+  border: 1px solid rgba(255, 171, 0, 0.4);
+  margin-bottom: 10px;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(5, 1fr);
+  background: linear-gradient(135deg, rgba(20, 20, 28, 0.9), rgba(5, 5, 8, 0.95));
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6), 0 15px 35px rgba(0, 0, 0, 0.4);
 
   div {
-    background-color: $white;
+    background-color: rgba(16, 16, 24, 0.85);
     transition: background-color 1s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 25px;
     width: 100%;
-    border-left: 1px solid $red;
-    border-right: 1px solid $red;
+    border-left: 1px solid rgba(255, 80, 80, 0.35);
+    border-right: 1px solid rgba(255, 80, 80, 0.35);
+    color: #dfe6ff;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -67,16 +100,14 @@ body {
   margin: auto;
   position: relative;
   align-items: center;
-  background-image: -webkit-repeating-radial-gradient(
-    top left,
-    circle,
-    $white,
-    $primary-color 10%,
-    $gray 20%
-  );
+  background: radial-gradient(circle at 20% 20%, rgba(255, 166, 77, 0.2), transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(92, 119, 255, 0.25), transparent 50%),
+    linear-gradient(160deg, #12141f, #05060a);
   height: 400px;
   width: 760px;
-  border: 2px solid $orange;
+  border: 1px solid rgba(255, 166, 77, 0.6);
+  border-radius: 28px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 166, 77, 0.2);
 
   .slot-wheen-wrapper {
     display: flex;
@@ -94,15 +125,17 @@ body {
       .wheel {
         width: 160px;
         position: relative;
-        background: gray;
+        background: linear-gradient(180deg, rgba(20, 20, 32, 0.9), rgba(0, 0, 0, 0.9));
         display: flex;
         flex-direction: column;
         overflow: hidden;
         height: -webkit-fill-available;
-        box-shadow: inset 10px 12px 45px rgba(0, 0, 0, 0.5);
+        border-radius: 18px;
+        box-shadow: inset 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(88, 140, 255, 0.2);
         img {
           position: absolute;
           margin-left: 10px;
+          filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.6));
           &:nth-child(1) {
             transform: rotateY(0deg) translateY(0);
           }
@@ -155,9 +188,10 @@ body {
   justify-content: flex-end;
   flex-direction: column;
   margin: auto;
-  background: $primary-color;
-  border: 2px solid $orange;
+  background: linear-gradient(160deg, rgba(25, 28, 38, 0.9), rgba(10, 10, 16, 0.95));
+  border: 1px solid rgba(255, 171, 0, 0.45);
   border-radius: 50% 50% 0 0/100% 100% 0 0;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
   .player-score-container {
     position: relative;
     .flying-money {
@@ -191,7 +225,7 @@ body {
       font-weight: 900;
       font-size: 3rem;
       text-align: center;
-      color: #78ff00;
+      color: #7dff72;
       line-height: 25px;
       margin-left: -85px;
       font-family: "Courier New", Courier, monospace;
@@ -203,7 +237,7 @@ body {
       bottom: 10px;
       left: 50%;
       letter-spacing: 3px;
-      border: 2px solid $orange;
+      border: 1px solid rgba(255, 171, 0, 0.7);
       background: linear-gradient(
         to bottom,
         #1b1b1b 0%,
@@ -222,7 +256,7 @@ body {
       font-family: "Courier New", Courier, monospace;
       &:focus {
         outline: none;
-        box-shadow: 0px 0px 20px yellow;
+        box-shadow: 0 0 20px rgba(255, 220, 120, 0.8);
       }
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
@@ -945,8 +979,8 @@ body {
     height: 26%;
   }
   &.center {
-    border-top: 1px solid $gray;
-    border-bottom: 1px solid $gray;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     top: 33%;
   }
   &.bottom {
@@ -954,13 +988,16 @@ body {
     height: 28%;
   }
   &.active {
-    background-color: $red;
+    background-color: rgba(255, 88, 88, 0.7);
     animation: blinker 1s linear infinite;
   }
 }
 .debug-controls {
-  border: 2px solid $orange;
+  border: 1px solid rgba(255, 171, 0, 0.4);
   padding: 20px;
+  border-radius: 18px;
+  background: rgba(10, 12, 18, 0.7);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.55);
 }
 
 .debug-container {
@@ -974,11 +1011,13 @@ body {
     display: flex;
     position: relative;
     flex-direction: column;
-    border-radius: 15px;
-    background: $white;
+    border-radius: 22px;
+    background: rgba(12, 14, 20, 0.95);
     align-items: center;
     width: 600px;
     padding: 1rem 0;
+    border: 1px solid rgba(120, 140, 255, 0.2);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
     .random {
       display: none;
     }
@@ -991,7 +1030,7 @@ body {
       font-weight: 900;
       font-family: "Courier New", Courier, monospace;
       font-size: 20px;
-      color: $secondary-color;
+      color: #c7d5ff;
     }
     div.debug-area-bottom {
       display: flex;
@@ -1007,11 +1046,12 @@ body {
           font-family: sans-serif;
           letter-spacing: -1px;
           cursor: pointer;
+          color: #d7ddff;
           &.active {
-            border: 2px solid $red;
+            border: 1px solid rgba(255, 96, 96, 0.8);
             border-radius: 5px;
-            background-color: $primary-color;
-            color: $white;
+            background-color: rgba(90, 120, 255, 0.35);
+            color: #ffffff;
           }
         }
       }
@@ -1020,13 +1060,7 @@ body {
         display: flex;
         height: fit-content;
         padding: 0.5rem 0;
-        background: -webkit-repeating-radial-gradient(
-          top left,
-          circle,
-          $white,
-          $primary-color 10%,
-          $gray 20%
-        );
+        background: linear-gradient(140deg, rgba(16, 18, 30, 0.95), rgba(5, 6, 10, 0.95));
         width: 365px;
         justify-content: center;
         .debug-wheel {
@@ -1036,8 +1070,9 @@ body {
           position: relative;
           overflow: hidden;
           height: -webkit-fill-available;
-          background: $gray;
-          box-shadow: inset 10px 12px 45px rgba(0, 0, 0, 0.5);
+          background: rgba(10, 12, 18, 0.9);
+          box-shadow: inset 10px 12px 45px rgba(0, 0, 0, 0.7),
+            0 0 12px rgba(86, 156, 255, 0.15);
           justify-content: center;
           align-items: center;
           min-height: 120px;
